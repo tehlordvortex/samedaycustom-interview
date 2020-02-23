@@ -80,6 +80,9 @@ const SidebarLink = styled(NavLink)`
 `;
 
 const SidebarWrapper = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 100vh;
   width: ${props => (props.expanded ? `25.25rem` : `7.15rem`)};
   display: flex;
@@ -165,13 +168,15 @@ const links = [
   }
 ];
 
-export const Sidebar = () => {
+export const Sidebar = ({ onWidthChange = null, ...props }) => {
   const [open, setOpen] = useState(false);
   const toggleSidebar = () => {
-    setOpen(open => !open);
+    setOpen(!open);
+    if (typeof onWidthChange === "function")
+      onWidthChange(!open ? `25.25rem` : `7.15rem`);
   };
   return (
-    <SidebarWrapper expanded={open}>
+    <SidebarWrapper expanded={open} {...props}>
       <SidebarTrigger onClick={toggleSidebar} expanded={open}>
         <HamburgerIcon />
       </SidebarTrigger>
