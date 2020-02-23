@@ -17,7 +17,7 @@ export default {
 
 export const ExpandingSearchStory = withState({ value: "" })(({ store }) => (
   <ExpandingSearch
-    value={store.value}
+    value={store.state.value}
     onChange={value => store.set({ value })}
   />
 ));
