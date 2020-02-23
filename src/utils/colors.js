@@ -1,6 +1,13 @@
 export const ColorPalette = {
-  sidebarBackground: `#196BD8`,
+  sidebarBackground: {
+    default: `#007BFF`,
+    expanded: `#196BD8`
+  },
   sidebarText: `#2268D8`,
+  sidebarActiveItem: {
+    default: `#97C8F8`,
+    expanded: `#CEE6FF`
+  },
   tabIndicator: `#007AFE`,
   tabText: `#007AFE`,
   badgeBackground: {
