@@ -29,6 +29,7 @@ export const ColorPalette = {
   blue: `#196BD8`,
   green: `#009B2A`,
   gray: {
+    divider: "#CCCCCC",
     veryLight: `#C1C1C1`,
     background: `#EEEEEE`,
     disabled: `#D0D0D0`,
