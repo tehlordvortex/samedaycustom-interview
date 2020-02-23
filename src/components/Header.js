@@ -13,6 +13,7 @@ const HeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0px 3px 50px #1877ff1c;
 `;
 
 const HeaderBrandImage = styled.img`
