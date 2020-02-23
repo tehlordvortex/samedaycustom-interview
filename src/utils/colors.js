@@ -24,10 +24,12 @@ export const ColorPalette = {
     default: `#fff`,
     transparent: `#1A3A54`
   },
+  topPanelIcon: "#007BFF",
   red: `#FF0000`,
   white: `#FFFFFF`,
   blue: `#196BD8`,
   green: `#009B2A`,
+  black: `#030303`,
   gray: {
     divider: "#CCCCCC",
     veryLight: `#C1C1C1`,
