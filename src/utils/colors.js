@@ -9,7 +9,11 @@ export const ColorPalette = {
     expanded: `#CEE6FF`
   },
   tabIndicator: `#007AFE`,
-  tabText: `#007AFE`,
+  tabText: {
+    default: `#1D1D1D`,
+    active: `#007AFE`,
+    activeBadge: "#9B9B9B"
+  },
   badgeBackground: {
     default: `#007BFF`,
     danger: `#D80B0B`,
