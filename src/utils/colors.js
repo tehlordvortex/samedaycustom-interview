@@ -16,9 +16,18 @@ export const ColorPalette = {
     light: `#529DED`
   },
   pageBackground: `#FCFCFC`,
-  dropdownTriggerBackground: {
+  buttonBackground: {
     default: `#007BFF`,
+    secondary: "#fff",
     transparent: `transparent`
+  },
+  buttonBorder: {
+    secondary: "#939393"
+  },
+  buttonText: {
+    default: "#FCFCFC",
+    secondary: "#000",
+    transparent: "#1A3A54"
   },
   dropdownTriggerColor: {
     default: `#fff`,
