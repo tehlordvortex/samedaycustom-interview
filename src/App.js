@@ -22,7 +22,7 @@ const ContentArea = styled.div`
   min-height: 100vh;
   margin-left: ${props => props.sidebarWidth};
   background-color: ${ColorPalette.pageBackground};
-  transition: 0.3s ease-out;
+  transition: margin 0.3s ease-out;
   display: flex;
   flex-direction: column;
 `;
