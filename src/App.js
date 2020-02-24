@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import { Sidebar } from "./components/Sidebar";
 import styled from "styled-components";
 import { Header } from "./components/Header";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 import { ColorPalette } from "./utils/colors";
+import { ProductionHouse } from "./routes/Operations/ProductionHouse";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -35,7 +41,15 @@ function App() {
         <ContentArea sidebarWidth={sidebarWidth}>
           <Header />
           <PageContent>
-            <Switch></Switch>
+            <Switch>
+              <Route
+                path="/operations/production-house"
+                component={ProductionHouse}
+              />
+              <Route
+                render={() => <Redirect to="/operations/production-house" />}
+              />
+            </Switch>
           </PageContent>
         </ContentArea>
       </Wrapper>
