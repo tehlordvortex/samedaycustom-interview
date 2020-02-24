@@ -5,6 +5,7 @@ import { Button, ButtonIcon } from "../../components/Button";
 import { DropdownIcon } from "../../components/Dropdown";
 import styled from "styled-components";
 import { Search } from "../../components/Search";
+import { TabPanel, Tabs, TabPanelActions } from "../../components/Tabs";
 
 const ActionButton = styled(Button)`
   margin-right: 1.25rem;
@@ -18,8 +19,30 @@ const PageContent = styled.div`
   margin-top: 11.4rem;
 `;
 
+const tabs = [
+  {
+    id: "all",
+    label: "All Productions",
+    badge: {
+      count: 192
+    }
+  },
+  {
+    id: "awaiting",
+    label: "Awaiting Production",
+    badge: {
+      count: 19
+    }
+  },
+  {
+    id: "completed",
+    label: "Completed"
+  }
+];
+
 export const ProductionHouse = () => {
   const [search, setSearch] = useState("");
+  const [activeItem, setActiveItem] = useState("all");
   return (
     <React.Fragment>
       <TopPanel icon={<ProductIcon />} title="Production House">
@@ -31,7 +54,22 @@ export const ProductionHouse = () => {
         </ActionButton>
         <Search value={search} onChange={setSearch} />
       </TopPanel>
-      <PageContent></PageContent>
+      <PageContent>
+        <TabPanel>
+          <Tabs
+            items={tabs}
+            activeItem={activeItem}
+            onChangeActiveItem={setActiveItem}
+          />
+          <TabPanelActions>
+            <Button secondary>Print worksheet</Button>
+            <Button transparent>Mark as Complete</Button>
+            <Button disabled centered>
+              Save
+            </Button>
+          </TabPanelActions>
+        </TabPanel>
+      </PageContent>
     </React.Fragment>
   );
 };
