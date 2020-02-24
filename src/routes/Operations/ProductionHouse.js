@@ -6,6 +6,8 @@ import { DropdownIcon } from "../../components/Dropdown";
 import styled from "styled-components";
 import { Search } from "../../components/Search";
 import { TabPanel, Tabs, TabPanelActions } from "../../components/Tabs";
+import { Table } from "../../components/Tables";
+import { defaultTableColumns, defaultTableData } from "../../utils/table";
 
 const ActionButton = styled(Button)`
   margin-right: 1.25rem;
@@ -43,6 +45,10 @@ const tabs = [
 export const ProductionHouse = () => {
   const [search, setSearch] = useState("");
   const [activeItem, setActiveItem] = useState("all");
+  const tableProps = {
+    columns: defaultTableColumns,
+    data: defaultTableData
+  };
   return (
     <React.Fragment>
       <TopPanel icon={<ProductIcon />} title="Production House">
@@ -69,6 +75,7 @@ export const ProductionHouse = () => {
             </Button>
           </TabPanelActions>
         </TabPanel>
+        <Table {...tableProps} />
       </PageContent>
     </React.Fragment>
   );
