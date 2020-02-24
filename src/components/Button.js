@@ -24,19 +24,17 @@ export const Button = styled.button`
     css`
       border-color: ${ColorPalette.buttonBorder.secondary};
       background-color: ${ColorPalette.white};
-      padding: 1rem 1.4rem;
       color: ${ColorPalette.buttonText.secondary};
-      border-radius: 0.4rem;
     `}
 
   ${props =>
     props.transparent &&
     css`
-      border: none;
+      border: 1px solid transparent;
       background-color: ${ColorPalette.buttonBackground.transparent};
       color: ${ColorPalette.buttonText.transparent};
-      font-size: 1.5rem;
       line-height: 1.23;
+      padding: 1rem 1.4rem;
     `}
 
   ${props =>
@@ -44,6 +42,8 @@ export const Button = styled.button`
     css`
       text-align: center;
       justify-content: center;
+      padding: 1rem 1.4rem;
+      border-radius: 0.4rem;
     `}
 
   &:disabled {
