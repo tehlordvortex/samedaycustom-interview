@@ -24,8 +24,6 @@ export const Button = styled.button`
     css`
       border-color: ${ColorPalette.buttonBorder.secondary};
       background-color: ${ColorPalette.white};
-      text-align: center;
-      justify-content: center;
       padding: 1rem 1.4rem;
       color: ${ColorPalette.buttonText.secondary};
       border-radius: 0.4rem;
@@ -40,6 +38,32 @@ export const Button = styled.button`
       font-size: 1.5rem;
       line-height: 1.23;
     `}
+
+  ${props =>
+    (props.centered || props.secondary) &&
+    css`
+      text-align: center;
+      justify-content: center;
+    `}
+
+  &:disabled {
+    background-color: ${ColorPalette.gray.disabled};
+    border-color: ${ColorPalette.gray.disabled};
+    ${props =>
+      props.secondary &&
+      css`
+        color: ${ColorPalette.gray.disabled};
+        background-color: ${ColorPalette.buttonBackground.secondary};
+      `}
+    ${props =>
+      props.transparent &&
+      css`
+        color: ${ColorPalette.gray.disabled};
+        background-color: ${ColorPalette.buttonBackground.transparent};
+        border-color: ${ColorPalette.buttonBackground.transparent};
+      `}
+    cursor: not-allowed;
+  }
 `;
 
 export const ButtonIcon = styled.span`
