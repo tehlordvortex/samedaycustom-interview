@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import { ColorPalette } from "./utils/colors";
 import { ProductionHouse } from "./routes/Operations/ProductionHouse";
+import { Footer } from "./components/Footer";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -51,6 +52,7 @@ function App() {
               />
             </Switch>
           </PageContent>
+          <Footer />
         </ContentArea>
       </Wrapper>
     </Router>
