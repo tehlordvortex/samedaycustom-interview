@@ -50,5 +50,9 @@ export const ColorPalette = {
     background: `#EEEEEE`,
     disabled: `#D0D0D0`,
     text: `#707070`
-  }
+  },
+  footerBackground: "#F4F7F6",
+  footerTitle: "#007BFF",
+  footerAppLink: "#E6E6E6",
+  footerLink: "#007BFF"
 };
