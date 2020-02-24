@@ -28,7 +28,7 @@ const ContentArea = styled.div`
 `;
 
 const PageContent = styled.main`
-  padding: 2rem 7.65rem 2rem 13rem;
+  padding: 2rem 7.65rem;
   height: 100%;
 `;
 

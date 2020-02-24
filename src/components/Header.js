@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 
 const HeaderWrapper = styled.header`
   background-color: ${ColorPalette.white};
-  padding: 2.1rem 7.65rem 1.75rem 13rem;
+  padding: 2.1rem 7.65rem 1.75rem 7.65rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
