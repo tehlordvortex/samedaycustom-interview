@@ -34,7 +34,7 @@ const TabItem = styled.button`
     content: "";
     left: 0;
     right: 0;
-    top: 3.4rem;
+    top: 4.3rem;
     height: 0.5rem;
     transform: scaleY(0);
     transform-origin: bottom center;
@@ -87,7 +87,7 @@ export const TabPanel = styled.div`
 
 export const TabPanelActions = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 export const Tabs = ({ items, activeItem, onChangeActiveItem }) => {
