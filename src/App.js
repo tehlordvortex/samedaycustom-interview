@@ -11,6 +11,7 @@ import {
 import { ColorPalette } from "./utils/colors";
 import { ProductionHouse } from "./routes/Operations/ProductionHouse";
 import { Footer } from "./components/Footer";
+import { ProductionItem } from "./routes/Operations/ProductionItem";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -46,6 +47,11 @@ function App() {
               <Route
                 path="/operations/production-house"
                 component={ProductionHouse}
+                exact
+              />
+              <Route
+                path="/operations/production-house/item"
+                component={ProductionItem}
               />
               <Route
                 render={() => <Redirect to="/operations/production-house" />}
