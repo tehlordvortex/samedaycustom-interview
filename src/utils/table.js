@@ -123,6 +123,17 @@ export const defaultTableColumns = [
   }
 ];
 
+export const productPageTableColumns = [
+  ...defaultTableColumns.filter(column =>
+    ["Item #", "Details", "Print Type", "Colors", "Qty"].includes(column.Header)
+  ),
+  {
+    Header: "Paid",
+    accessor: "paid",
+    Cell: ({ cell: { value } }) => (value ? "Paid in full" : "Unpaid")
+  }
+];
+
 export const defaultTableData = [
   {
     orderNumber: "#232JODJSDKN2",
@@ -147,7 +158,8 @@ export const defaultTableData = [
       type: "Running",
       completed: 2,
       total: 5
-    }
+    },
+    paid: true
   },
   {
     orderNumber: "#232JODJSDKN2",
@@ -172,6 +184,9 @@ export const defaultTableData = [
       type: "Running",
       completed: 2,
       total: 5
-    }
+    },
+    paid: true
   }
 ];
+
+export const productPageTableData = [defaultTableData[0]];

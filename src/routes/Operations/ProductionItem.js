@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { TopPanel } from "../../components/TopPanel";
 import { ReactComponent as ProductIcon } from "../../icons/product.svg";
 import styled, { css } from "styled-components";
@@ -13,6 +13,13 @@ import {
 import { ButtonIcon, Button } from "../../components/Button";
 import { TabPanel, Tabs, TabPanelActions } from "../../components/Tabs";
 import { Table } from "../../components/Tables";
+import {
+  productPageTableColumns,
+  productPageTableData
+} from "../../utils/table";
+import pinkLarge from "../../images/pink-large.png";
+import redLarge from "../../images/red-large.png";
+import blackLarge from "../../images/black-large.png";
 
 const OrderID = styled.h5`
   margin-top: 3.05rem;
@@ -123,6 +130,46 @@ const Actions = styled(TabPanelActions)`
   }
 `;
 
+const ProductPanel = styled.div`
+  background-color: ${ColorPalette.gray.background};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.15rem 4.45rem;
+  margin-bottom: 1.75rem;
+`;
+
+const ProductPanelTitle = styled.h5`
+  color: ${ColorPalette.pureBlack};
+  font-size: 1.5rem;
+  line-height: 1.23;
+`;
+
+const ProductImageList = styled.div`
+  display: flex;
+  margin-bottom: 2.55rem;
+`;
+
+const ProductImageListItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-right: 2.25rem;
+  align-items: center;
+`;
+
+const ProductImage = styled.img`
+  width: 17.8rem;
+  height: auto;
+  margin-bottom: 2.2rem;
+`;
+
+const ProductImageCaption = styled.p`
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1.23;
+  color: ${ColorPalette.pureBlack};
+`;
+
 const DeliveryMethod = () => {
   const [method, setMethod] = useState("Pickup Order");
   const [open, setOpen] = useState(false);
@@ -159,18 +206,20 @@ const DeliveryMethod = () => {
   );
 };
 
-const tabs = [
-  {
-    id: "details",
-    label: "Product Details"
-  },
-  {
-    id: "notes",
-    label: "History / Notes"
-  }
-];
-
 const ProductCard = () => {
+  const tabs = useMemo(
+    () => [
+      {
+        id: "details",
+        label: "Product Details"
+      },
+      {
+        id: "notes",
+        label: "History / Notes"
+      }
+    ],
+    []
+  );
   const [activeItem, setActiveItem] = useState("details");
   const [mode, setMode] = useState("worksheet");
   const [open, setOpen] = useState(false);
@@ -180,10 +229,17 @@ const ProductCard = () => {
     setMode(mode);
     close();
   };
+  const tableProps = {
+    columns: productPageTableColumns,
+    data: productPageTableData
+  };
   return (
     <Card soft style={{ paddingTop: "1.9rem", paddingRight: "2rem" }}>
       <TabPanel
-        style={{ borderBottom: `1px solid ${ColorPalette.gray.divider}` }}
+        style={{
+          borderBottom: `1px solid ${ColorPalette.gray.divider}`,
+          marginBottom: "3.9rem"
+        }}
       >
         <Tabs
           items={tabs}
@@ -225,6 +281,31 @@ const ProductCard = () => {
           </Button>
         </Actions>
       </TabPanel>
+      <ProductPanel>
+        <ProductPanelTitle>Product</ProductPanelTitle>
+        <Button compact outline>
+          Download Artwork
+        </Button>
+      </ProductPanel>
+      <ProductImageList>
+        <ProductImageListItem>
+          <ProductImage src={redLarge} />
+          <ProductImageCaption>Front</ProductImageCaption>
+        </ProductImageListItem>
+        <ProductImageListItem>
+          <ProductImage src={blackLarge} />
+          <ProductImageCaption>Front</ProductImageCaption>
+        </ProductImageListItem>
+        <ProductImageListItem>
+          <ProductImage src={pinkLarge} />
+          <ProductImageCaption>Front</ProductImageCaption>
+        </ProductImageListItem>
+        <ProductImageListItem>
+          <ProductImage src={blackLarge} />
+          <ProductImageCaption>Front</ProductImageCaption>
+        </ProductImageListItem>
+      </ProductImageList>
+      <Table {...tableProps} />
     </Card>
   );
 };
