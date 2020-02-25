@@ -5,7 +5,10 @@ import { ColorPalette } from "../utils/colors";
 import { ExpandingSearch } from "./ExpandingSearch";
 import { ReactComponent as MailIcon } from "../icons/mail.svg";
 import { ReactComponent as ShoppingCartIcon } from "../icons/shopping-cart.svg";
+import { ReactComponent as ListIcon } from "../icons/list.svg";
 import { NavLink } from "react-router-dom";
+import { Button, ButtonIcon } from "./Button";
+import { DropdownIcon } from "./Dropdown";
 
 const HeaderWrapper = styled.header`
   background-color: ${ColorPalette.white};
@@ -74,6 +77,28 @@ const HeaderItemText = styled.span`
   margin-left: 1.4rem;
 `;
 
+const HeaderAccountItem = styled(Button)`
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: ${ColorPalette.pureBlack};
+  min-width: unset;
+`;
+const HeaderAccountImage = styled.img`
+  width: 4.5rem;
+  height: 4.5rem;
+  border: 2px solid #196bd8;
+  margin-bottom: 0.4rem;
+  border-radius: 50%;
+`;
+
+const HeaderAccountText = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const items = [
   {
     to: "/messages",
@@ -94,7 +119,7 @@ const items = [
   {
     to: "/notifications",
     label: "Notifications",
-    icon: null,
+    icon: <ListIcon />,
     badge: {
       count: 1
     }
@@ -126,6 +151,15 @@ export const Header = () => {
             <HeaderDivider />
           </React.Fragment>
         ))}
+        <HeaderAccountItem>
+          <HeaderAccountImage src="https://randomuser.me/api/portraits/men/97.jpg" />
+          <HeaderAccountText>
+            Me
+            <ButtonIcon style={{ color: "#0B6ED8" }}>
+              <DropdownIcon />
+            </ButtonIcon>
+          </HeaderAccountText>
+        </HeaderAccountItem>
       </HeaderContent>
     </HeaderWrapper>
   );
