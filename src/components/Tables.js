@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 import { ColorPalette } from "../utils/colors";
 import { useTable, useFlexLayout, useRowSelect } from "react-table";
+import { Link } from "react-router-dom";
 
 const TableWrapper = styled.div`
   display: block;
@@ -39,6 +40,8 @@ const TableRow = styled.div`
   box-shadow: 0px 3px 50px #007bff00;
   margin-top: 0.8rem;
   background-color: ${ColorPalette.white};
+  display: block;
+  text-decoration: none;
 
   &:not(:last-of-type) {
   }
@@ -170,8 +173,14 @@ export const Table = ({ columns, data, ...props }) => {
       <TableBody {...getTableBodyProps()}>
         {rows.map(row => {
           prepareRow(row);
+          const linkProps = {
+            ...(row.original.linkTo && {
+              as: Link,
+              to: row.original.linkTo
+            })
+          };
           return (
-            <TableRow {...row.getRowProps()}>
+            <TableRow {...linkProps} {...row.getRowProps()}>
               {row.cells.map(cell => (
                 <TableCell {...cell.getCellProps()}>
                   {cell.render("Cell")}

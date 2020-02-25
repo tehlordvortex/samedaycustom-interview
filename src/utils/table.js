@@ -159,7 +159,8 @@ export const defaultTableData = [
       completed: 2,
       total: 5
     },
-    paid: true
+    paid: true,
+    linkTo: "/operations/production-house/item"
   },
   {
     orderNumber: "#232JODJSDKN2",
@@ -185,7 +186,8 @@ export const defaultTableData = [
       completed: 2,
       total: 5
     },
-    paid: true
+    paid: true,
+    linkTo: "/operations/production-house/item"
   }
 ];
 
