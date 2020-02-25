@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { ColorPalette } from "../utils/colors";
 import styled, { css } from "styled-components";
 import { ReactComponent as HamburgerIcon } from "../icons/hamburger.svg";
@@ -10,6 +10,8 @@ import { ReactComponent as ShoppingCartIcon } from "../icons/shopping-cart.svg";
 import { ReactComponent as SupplyIcon } from "../icons/supply.svg";
 import { ReactComponent as FileIcon } from "../icons/file.svg";
 import { ReactComponent as SettingsIcon } from "../icons/settings.svg";
+import { ButtonIcon } from "./Button";
+import { DropdownIcon } from "./Dropdown";
 
 const SidebarBadge = styled.span`
   width: 1.3rem;
@@ -54,6 +56,8 @@ const SidebarLink = styled(NavLink)`
   /* overflow: hidden; */
   transition: margin 0.2s ease-out;
   position: relative;
+  border: none;
+  background-color: transparent;
 
   &:not(:last-of-type) {
     margin-bottom: ${props => (props.expanded ? 0 : "2.4rem")};
@@ -63,7 +67,7 @@ const SidebarLink = styled(NavLink)`
     background-color: ${props =>
       props.expanded
         ? ColorPalette.sidebarActiveItem.expanded
-        : ColorPalette.sidebarActiveItem.default};
+        : ColorPalette.sidebarActiveItem.default} !important;
     color: ${props =>
       props.expanded ? ColorPalette.sidebarText : ColorPalette.white};
   }
@@ -76,6 +80,14 @@ const SidebarLink = styled(NavLink)`
       width: unset;
       height: 4.9rem;
       justify-content: flex-start;
+    `}
+
+  ${props =>
+    props.child &&
+    css`
+      padding-left: 8.2rem;
+      font-weight: normal;
+      font-size: 1.25rem;
     `}
 `;
 
@@ -126,6 +138,15 @@ const SidebarIcon = styled.span`
   position: relatove;
 `;
 
+const SidebarDropdownWrapper = styled.div`
+  max-height: ${props =>
+    props.open ? "30rem" : props.expanded ? "4.9rem" : "3.9rem"};
+  width: ${props => (props.expanded ? "unset" : "3.9rem")};
+  overflow: hidden;
+  transition: 0.3s ease-out;
+  margin-bottom: ${props => (props.expanded ? 0 : "2.4rem")};
+`;
+
 const links = [
   {
     label: "Dashboard",
@@ -136,6 +157,28 @@ const links = [
     label: "Operations",
     to: "/operations",
     icon: <TimeLeftIcon />,
+    children: [
+      {
+        label: "Orders",
+        to: "/operations/orders"
+      },
+      {
+        label: "Production House",
+        to: "/operations/production-house"
+      },
+      {
+        label: "Bids",
+        to: "/operations/bids"
+      },
+      {
+        label: "Promotions / Discount",
+        to: "/operations/promotions"
+      },
+      {
+        label: "Outsourcing",
+        to: "/operations/outsourcing"
+      }
+    ],
     badge: {
       count: 1
     }
@@ -168,6 +211,43 @@ const links = [
   }
 ];
 
+const SidebarDropdownLink = ({ link, expanded }) => {
+  const [open, setOpen] = useState(false);
+  const trigger = () => setOpen(!open);
+  const { pathname } = useLocation();
+  const active = pathname.startsWith(link.to);
+  return (
+    <SidebarDropdownWrapper open={open} expanded={expanded}>
+      <SidebarLink
+        as="button"
+        expanded={expanded}
+        onClick={trigger}
+        style={{ marginBottom: 0 }}
+        className={active && !open ? "active" : undefined}
+      >
+        <SidebarIcon expanded={expanded}>
+          {link.badge && !expanded && (
+            <SidebarBadge icon>{link.badge.count}</SidebarBadge>
+          )}
+          {link.icon}
+        </SidebarIcon>
+        {expanded && link.label}
+        {link.badge && expanded && (
+          <SidebarBadge>{link.badge.count}</SidebarBadge>
+        )}
+        <ButtonIcon>
+          <DropdownIcon />
+        </ButtonIcon>
+      </SidebarLink>
+      {link.children.map(link => (
+        <SidebarLink expanded={expanded} child to={link.to}>
+          {link.label}
+        </SidebarLink>
+      ))}
+    </SidebarDropdownWrapper>
+  );
+};
+
 export const Sidebar = ({ onWidthChange = null, ...props }) => {
   const [open, setOpen] = useState(false);
   const toggleSidebar = () => {
@@ -181,20 +261,24 @@ export const Sidebar = ({ onWidthChange = null, ...props }) => {
         <HamburgerIcon />
       </SidebarTrigger>
       <SidebarLinks expanded={open}>
-        {links.map(link => (
-          <SidebarLink expanded={open} to={link.to}>
-            <SidebarIcon expanded={open}>
-              {link.badge && !open && (
-                <SidebarBadge icon>{link.badge.count}</SidebarBadge>
+        {links.map(link =>
+          link.children ? (
+            <SidebarDropdownLink link={link} expanded={open} />
+          ) : (
+            <SidebarLink expanded={open} to={link.to}>
+              <SidebarIcon expanded={open}>
+                {link.badge && !open && (
+                  <SidebarBadge icon>{link.badge.count}</SidebarBadge>
+                )}
+                {link.icon}
+              </SidebarIcon>
+              {open && link.label}
+              {link.badge && open && (
+                <SidebarBadge>{link.badge.count}</SidebarBadge>
               )}
-              {link.icon}
-            </SidebarIcon>
-            {open && link.label}
-            {link.badge && open && (
-              <SidebarBadge>{link.badge.count}</SidebarBadge>
-            )}
-          </SidebarLink>
-        ))}
+            </SidebarLink>
+          )
+        )}
       </SidebarLinks>
       <SidebarLinks expanded={open} bottom>
         <SidebarLink expanded={open} to={"/settings"}>
