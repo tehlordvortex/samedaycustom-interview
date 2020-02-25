@@ -87,7 +87,9 @@ const SidebarLink = styled(NavLink)`
     css`
       padding-left: 8.2rem;
       font-weight: normal;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
+      height: 4rem;
+      letter-spacing: 0;
     `}
 `;
 
