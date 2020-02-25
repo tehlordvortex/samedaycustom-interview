@@ -20,6 +20,13 @@ export const Button = styled.button`
   cursor: pointer;
 
   ${props =>
+    props.outline &&
+    css`
+      background-color: transparent;
+      color: ${ColorPalette.buttonBackground.default};
+    `}
+
+  ${props =>
     props.secondary &&
     css`
       border-color: ${ColorPalette.buttonBorder.secondary};
@@ -42,6 +49,11 @@ export const Button = styled.button`
     css`
       text-align: center;
       justify-content: center;
+    `}
+
+  ${props =>
+    (props.centered || props.secondary || props.compact) &&
+    css`
       padding: 1rem 1.4rem;
       border-radius: 0.4rem;
     `}
