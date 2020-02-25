@@ -17,7 +17,7 @@ const TabItem = styled.button`
   text-align: left;
   font-weight: ${props => (props.active ? "bold" : "500")};
   font-size: 1.5rem;
-  line-height: 1.23rem;
+  line-height: 1.23;
   letter-spacing: 0;
   color: ${ColorPalette.tabText.default};
   cursor: pointer;
@@ -34,7 +34,7 @@ const TabItem = styled.button`
     content: "";
     left: 0;
     right: 0;
-    top: 4.3rem;
+    top: 4.2rem;
     height: 0.5rem;
     transform: scaleY(0);
     transform-origin: bottom center;
