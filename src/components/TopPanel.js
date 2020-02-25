@@ -50,7 +50,8 @@ const BackIconWrapper = styled.span`
   margin-right: 1rem;
 
   svg {
-    width: 30px;
+    width: 1.5rem;
+    height: auto;
   }
 `;
 
