@@ -40,6 +40,7 @@ export const ColorPalette = {
   topPanelIcon: "#007BFF",
   red: `#FF0000`,
   white: `#FFFFFF`,
+  deepBlue: "#1A3A54",
   blue: `#196BD8`,
   green: `#009B2A`,
   black: `#030303`,
