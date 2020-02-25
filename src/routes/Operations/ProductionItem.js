@@ -37,6 +37,27 @@ const Breadcrumbs = styled.h6`
   letter-spacing: 0;
   color: ${ColorPalette.topPanelIcon};
   margin-bottom: 2.3rem;
+
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Status = styled.h6`
+  text-align: right;
+  font-size: 2rem;
+  line-height: 1.225;
+  letter-spacing: 0;
+  color: ${ColorPalette.green};
+`;
+
+const StatusLabel = styled.span`
+  text-align: right;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: ${ColorPalette.topPanelIcon};
+  display: inline-block;
+  margin-right: 0.75rem;
 `;
 
 const SummmaryCard = styled(Card)`
@@ -298,15 +319,15 @@ const ProductCard = () => {
         </ProductImageListItem>
         <ProductImageListItem>
           <ProductImage src={blackLarge} />
-          <ProductImageCaption>Front</ProductImageCaption>
+          <ProductImageCaption>Back</ProductImageCaption>
         </ProductImageListItem>
         <ProductImageListItem>
           <ProductImage src={pinkLarge} />
-          <ProductImageCaption>Front</ProductImageCaption>
+          <ProductImageCaption>Side</ProductImageCaption>
         </ProductImageListItem>
         <ProductImageListItem>
           <ProductImage src={blackLarge} />
-          <ProductImageCaption>Front</ProductImageCaption>
+          <ProductImageCaption>Side</ProductImageCaption>
         </ProductImageListItem>
       </ProductImageList>
       <Table {...tableProps} />
@@ -323,7 +344,13 @@ export const ProductionItem = () => {
         showBackButton
       />
       <OrderID>Order: #ADJ2322434D</OrderID>
-      <Breadcrumbs>Account Setup > Delivery Method</Breadcrumbs>
+      <Breadcrumbs>
+        Account Setup > Delivery Method
+        <Status>
+          <StatusLabel>Production Status</StatusLabel>
+          Running 2 of 4
+        </Status>
+      </Breadcrumbs>
       <SummmaryCard>
         <SummaryItem>
           <SummaryItemTitle>
