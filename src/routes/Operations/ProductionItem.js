@@ -173,7 +173,7 @@ const ProductImageCaption = styled.p`
 const DeliveryMethod = () => {
   const [method, setMethod] = useState("Pickup Order");
   const [open, setOpen] = useState(false);
-  const trigger = () => setOpen(true);
+  const trigger = () => setOpen(!open);
   const close = () => setOpen(false);
   const chooseRush = () => {
     setMethod("Rush Shipping");
@@ -198,7 +198,9 @@ const DeliveryMethod = () => {
             </DropdownTrigger>
           }
         >
-          <DropdownItem onClick={chooseRush}>Rush Shipping</DropdownItem>
+          <DropdownItem divider onClick={chooseRush}>
+            Rush Shipping
+          </DropdownItem>
           <DropdownItem onClick={choosePickup}>Pickup Order</DropdownItem>
         </Dropdown>
       </div>
@@ -223,7 +225,7 @@ const ProductCard = () => {
   const [activeItem, setActiveItem] = useState("details");
   const [mode, setMode] = useState("worksheet");
   const [open, setOpen] = useState(false);
-  const trigger = () => setOpen(true);
+  const trigger = () => setOpen(!open);
   const close = () => setOpen(false);
   const switchTo = mode => () => {
     setMode(mode);
@@ -262,7 +264,9 @@ const ProductCard = () => {
               </Button>
             }
           >
-            <DropdownItem onClick={switchTo("invoice")}>Invoice</DropdownItem>
+            <DropdownItem divider onClick={switchTo("invoice")}>
+              Invoice
+            </DropdownItem>
             <DropdownItem onClick={switchTo("worksheet")}>
               Worksheet
             </DropdownItem>
