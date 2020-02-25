@@ -52,6 +52,7 @@ const Status = styled.h6`
 
 const StatusLabel = styled.span`
   text-align: right;
+  font-weight: 500;
   font-size: 1.5rem;
   line-height: 1.2;
   letter-spacing: 0;
