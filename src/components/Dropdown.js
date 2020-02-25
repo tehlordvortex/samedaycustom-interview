@@ -13,7 +13,7 @@ export const DropdownItem = styled.button`
   border: none;
   text-decoration: none;
   padding: 0.6rem 0;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 500;
   color: ${ColorPalette.gray.text};
   cursor: pointer;
