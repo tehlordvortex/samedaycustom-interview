@@ -32,6 +32,7 @@ const ContentArea = styled.div`
 const PageContent = styled.main`
   padding: 2rem 7.65rem;
   height: 100%;
+  min-height: calc(100vh - 10.23rem);
 `;
 
 function App() {

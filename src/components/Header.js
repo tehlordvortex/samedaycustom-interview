@@ -17,6 +17,9 @@ const HeaderWrapper = styled.header`
   align-items: center;
   justify-content: space-between;
   box-shadow: 0px 3px 50px #1877ff1c;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 `;
 
 const HeaderBrandImage = styled.img`
